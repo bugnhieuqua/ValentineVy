@@ -1,0 +1,394 @@
+:root {
+  --primary-pink: #ff4d6d;
+  --secondary-pink: #ff758f;
+  --dark-bg: #110818;
+  --gradient-bg: linear-gradient(145deg, #110818 0%, #1f0b24 55%, #2c1435 100%);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background-color: #050510;
+  background: var(--gradient-bg);
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Animated background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(
+      ellipse at 20% 80%,
+      rgba(255, 82, 133, 0.16) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(255, 130, 190, 0.14) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(255, 95, 165, 0.1) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+#experience-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.scene.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.overlay-content {
+  text-align: center;
+  position: relative;
+}
+
+/* Enhanced title with glow and animation */
+.main-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #fff, var(--primary-pink), #fff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+  text-shadow: 0 0 30px rgba(255, 77, 109, 0.5);
+  filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.4));
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Enhanced glass button with more effects */
+.glass-btn {
+  position: relative;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 8px 32px 0 rgba(255, 77, 109, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.glass-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.glass-btn:hover::before {
+  left: 100%;
+}
+
+.glass-btn:hover {
+  background: linear-gradient(135deg, var(--primary-pink) 0%, #ff6b8a 100%);
+  border-color: var(--primary-pink);
+  transform: scale(1.1) translateY(-3px);
+  box-shadow:
+    0 15px 40px 0 rgba(255, 77, 109, 0.5),
+    0 0 30px rgba(255, 77, 109, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.glass-btn:active {
+  transform: scale(1.05);
+}
+
+/* Pulse animation for button */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 8px 32px 0 rgba(255, 77, 109, 0.25);
+  }
+  50% {
+    box-shadow: 0 8px 32px 0 rgba(255, 77, 109, 0.5);
+  }
+}
+
+.glass-btn {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Clock display with enhanced effects */
+.clock-display {
+  font-size: 2rem;
+  font-weight: 300;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 122, 168, 0.22) 0%,
+    rgba(83, 23, 56, 0.25) 100%
+  );
+  padding: 1.5rem 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 0 30px rgba(255, 77, 109, 0.2),
+    inset 0 0 20px rgba(255, 77, 109, 0.05);
+  text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+  letter-spacing: 2px;
+}
+
+#scene-moments {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 136, 180, 0.1) 0%,
+    rgba(255, 136, 180, 0.03) 35%,
+    rgba(0, 0, 0, 0) 65%
+  );
+}
+
+#scene-opening,
+#scene-wishes,
+#scene-climax {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 140, 190, 0.08) 0%,
+    rgba(255, 140, 190, 0.02) 40%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.moment-container {
+  padding: 1.25rem;
+  border-radius: 24px;
+  background: rgba(255, 130, 175, 0.08);
+  border: 1px solid rgba(255, 180, 210, 0.25);
+  box-shadow:
+    0 12px 40px rgba(255, 77, 109, 0.18),
+    inset 0 0 22px rgba(255, 190, 215, 0.08);
+}
+
+/* Wishes content with enhanced glass effect */
+.wishes-content {
+  max-width: 700px;
+  padding: 2.5rem 3rem;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 77, 109, 0.1),
+    inset 0 0 30px rgba(255, 77, 109, 0.03);
+}
+
+#typewriter-text {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+}
+
+/* Climax scene with dramatic effects */
+.climax-content {
+  text-align: center;
+}
+
+#final-message {
+  font-family: "Dancing Script", cursive;
+  font-size: 7rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    to right,
+    #fff,
+    var(--primary-pink),
+    #fff,
+    var(--primary-pink)
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2s linear infinite;
+  text-shadow: 0 0 40px rgba(255, 77, 109, 0.6);
+  filter: drop-shadow(0 0 30px rgba(255, 77, 109, 0.5));
+}
+
+#couple-names {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+/* Glow cursor effect */
+.custom-cursor {
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, var(--primary-pink) 0%, transparent 70%);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  opacity: 0.8;
+  box-shadow:
+    0 0 20px var(--primary-pink),
+    0 0 40px var(--primary-pink);
+  transition: transform 0.1s ease;
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5);
+}
+
+/* Scene transitions */
+.scene {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 3rem;
+  }
+
+  .clock-display {
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .wishes-content {
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+
+  #final-message {
+    font-size: 3.5rem;
+  }
+
+  #couple-names {
+    font-size: 1.5rem;
+  }
+
+  .glass-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Additional ambient effects */
+.ambient-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 77, 109, 0.15) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px);
+  }
+}

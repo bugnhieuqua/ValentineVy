@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  </head>
+  <body>
+    <div id="experience-container"></div>
+
+    <!-- UI Overlay for Scene 1 -->
+    <div id="scene-opening" class="scene active">
+      <div class="overlay-content">
+        <h1 class="main-title">LOVE IN DEPTH</h1>
+        <button id="start-btn" class="glass-btn">Chạm vào trái tim ❤️</button>
+      </div>
+    </div>
+
+    <!-- UI Overlay for Scene 2 -->
+    <div id="scene-moments" class="scene">
+      <div class="moment-container">
+        <div class="clock-display" id="love-clock">
+          000 Ngày 00 Giờ 00 Phút 00 Giây
+        </div>
+        <!-- Photo frames will be added dynamically or via Three.js -->
+      </div>
+    </div>
+
+    <!-- UI Overlay for Scene 3 -->
+    <div id="scene-wishes" class="scene">
+      <div class="wishes-content">
+        <div id="typewriter-text"></div>
+      </div>
+    </div>
+
+    <!-- UI Overlay for Scene 4 -->
+    <div id="scene-climax" class="scene">
+      <div class="climax-content">
+        <h2 id="final-message">Em Yêu Anh</h2>
+        <div id="couple-names">--- Vy ❤️ Huy ---</div>
+      </div>
+    </div>
+
+    <audio id="bg-music" loop>
+      <source src="assets/nhac.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="heartbeat-sfx">
+      <source src="assets/heart.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
