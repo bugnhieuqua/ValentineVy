@@ -19,9 +19,7 @@ export default class SceneMoments {
     this.photoTextures = [];
     this.startDate = "2026-02-14"; // Valentine's Day 2026
     this.photoSources = [
-      "images/imaged.png",
-      "images/imaged.png",
-      "images/imaged.png",
+      
     ];
 
     this.init();
